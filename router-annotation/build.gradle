@@ -1,0 +1,20 @@
+plugins {
+    id 'java-library'
+}
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.lannaican'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+//指定编译的编码
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+}
