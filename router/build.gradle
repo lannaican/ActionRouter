@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.library'
 }
-//apply plugin: 'com.github.dcendents.android-maven'
-//group='com.github.lannaican'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.lannaican'
 
 android {
     compileSdkVersion 30
@@ -33,8 +33,5 @@ android {
 dependencies {
 
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    api project(path: ':router-annotation')
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    api "com.github.lannaican.JoJoRouter:router-annotation:1.0.1"
 }
