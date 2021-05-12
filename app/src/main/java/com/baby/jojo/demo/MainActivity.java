@@ -1,6 +1,6 @@
 package com.baby.jojo.demo;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.star.router.JoJoRouter;

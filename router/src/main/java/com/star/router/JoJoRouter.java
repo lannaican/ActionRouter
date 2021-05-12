@@ -1,15 +1,15 @@
 package com.star.router;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
+import com.baby.jojo.router.model.RouteData;
+import com.baby.jojo.router.model.RouteResult;
 import com.star.router.model.IRouteAction;
 import com.star.router.core.DefaultPattern;
 import com.star.router.core.LogisticsCenter;
 import com.star.router.core.Pattern;
 import com.star.router.core.Warehouse;
-import com.baby.jojo.router.model.RouteData;
-import com.baby.jojo.router.model.RouteResult;
 
 /**
  * Router管理器
