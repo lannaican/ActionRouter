@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
 }
 
-//apply plugin: "jojo.router"
+//apply plugin: "action.router"
 
 android {
     compileSdkVersion 30

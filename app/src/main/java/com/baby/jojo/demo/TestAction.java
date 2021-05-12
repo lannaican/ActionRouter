@@ -3,7 +3,7 @@ package com.baby.jojo.demo;
 import android.content.Context;
 
 import com.baby.jojo.router.annotation.JoJoRoute;
-import com.baby.jojo.router.model.IRouteAction;
+import com.star.router.model.IRouteAction;
 import com.baby.jojo.router.model.RouteResult;
 
 

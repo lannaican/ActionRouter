@@ -3,4 +3,4 @@ include ':router-compiler'
 include ':router'
 include ':router-plugin'
 include ':app'
-rootProject.name = "JoJoRouter"
+rootProject.name = "ActionRouter"

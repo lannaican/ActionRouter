@@ -3,7 +3,7 @@ package com.baby.jojo.demo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.baby.jojo.router.JoJoRouter;
+import com.star.router.JoJoRouter;
 
 public class MainActivity extends AppCompatActivity {
 
