@@ -1,6 +1,6 @@
 package com.star.router.core;
 
-import com.baby.jojo.router.base.IRouteGroup;
+import com.star.router.base.IRouteGroup;
 
 /**
  * @author lnc

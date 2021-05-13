@@ -2,7 +2,7 @@ package com.star.router.core;
 
 import android.text.TextUtils;
 
-import com.baby.jojo.router.model.RouteData;
+import com.star.router.model.RouteData;
 
 /**
  * 默认的查找器
@@ -13,7 +13,7 @@ import com.baby.jojo.router.model.RouteData;
 public class DefaultPattern implements Pattern{
 
     @Override
-    public boolean match(RouteData data, String type, String path) {
-        return TextUtils.equals(data.getType(), type) && !TextUtils.isEmpty(path) && path.contains(data.getUrl());
+    public boolean match(RouteData data, String path) {
+        return !TextUtils.isEmpty(path) && path.contains(data.getUrl());
     }
 }

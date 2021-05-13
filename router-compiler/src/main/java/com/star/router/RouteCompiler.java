@@ -1,14 +1,14 @@
 package com.star.router;
 
 
-import com.baby.jojo.router.annotation.JoJoRoute;
-import com.baby.jojo.router.base.IRouteGroup;
-import com.baby.jojo.router.model.RouteData;
 import com.google.auto.service.AutoService;
 import com.google.common.reflect.TypeToken;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
+import com.star.router.annotation.ActionRoute;
+import com.star.router.base.IRouteGroup;
+import com.star.router.model.RouteData;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -61,7 +61,7 @@ public class RouteCompiler extends AbstractProcessor {
                     .addSuperinterface(IRouteGroup.class)
                     .addModifiers(Modifier.PUBLIC);
             //获取注解
-            Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(JoJoRoute.class);
+            Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(ActionRoute.class);
             logger.info("Find Route Num: " + elements.size());
             //添加方法
             MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder("loadAction");
@@ -70,8 +70,8 @@ public class RouteCompiler extends AbstractProcessor {
             methodBuilder.addParameter(new TypeToken<Map<RouteData, Class>>(){}.getType(), "map", Modifier.FINAL);
             if (!elements.isEmpty()) {
                 for (Element element : elements) {
-                    JoJoRoute joJoRoute = element.getAnnotation(JoJoRoute.class);
-                    methodBuilder.addStatement("map.put(new $T(\"" + joJoRoute.type() + "\",\"" + joJoRoute.path() + "\"), $T.class)", RouteData.class, element);
+                    ActionRoute actionRoute = element.getAnnotation(ActionRoute.class);
+                    methodBuilder.addStatement("map.put(new $T(\"" + actionRoute.path() + "\"), $T.class)", RouteData.class, element);
                 }
             }
             classBuilder.addMethod(methodBuilder.build());
@@ -82,7 +82,7 @@ public class RouteCompiler extends AbstractProcessor {
                 JavaFile javaFile = JavaFile.builder(Constant.GENERATE_PACKAGE, classBuilder.build()).build();
                 javaFile.writeTo(filer);
                 logger.info("Create class: " + moduleName + ".class");
-                logger.info(">>>>>>>>>>>>>JoJo Route End<<<<<<<<<<<<<");
+                logger.info(">>>>>>>>>>>>>Action Route End<<<<<<<<<<<<<");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,7 +97,7 @@ public class RouteCompiler extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> set = new HashSet<>();
-        set.add(JoJoRoute.class.getCanonicalName());
+        set.add(ActionRoute.class.getCanonicalName());
         return set;
     }
 

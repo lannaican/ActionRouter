@@ -1,6 +1,7 @@
 package com.star.router.core;
 
-import com.baby.jojo.router.model.RouteData;
+
+import com.star.router.model.RouteData;
 
 /**
  * 查找符合条件的路由
@@ -10,6 +11,6 @@ import com.baby.jojo.router.model.RouteData;
  */
 public interface Pattern {
 
-    boolean match(RouteData data, String type, String path);
+    boolean match(RouteData data, String path);
 
 }

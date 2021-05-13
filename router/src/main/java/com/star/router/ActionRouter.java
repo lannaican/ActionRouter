@@ -3,13 +3,13 @@ package com.star.router;
 import android.content.Context;
 import androidx.annotation.Nullable;
 
-import com.baby.jojo.router.model.RouteData;
-import com.baby.jojo.router.model.RouteResult;
 import com.star.router.model.IRouteAction;
 import com.star.router.core.DefaultPattern;
 import com.star.router.core.LogisticsCenter;
 import com.star.router.core.Pattern;
 import com.star.router.core.Warehouse;
+import com.star.router.model.RouteData;
+import com.star.router.model.RouteResult;
 
 /**
  * Router管理器
@@ -17,9 +17,9 @@ import com.star.router.core.Warehouse;
  * @author lnc
  * @date 2021/4/27
  */
-public class JoJoRouter {
+public class ActionRouter {
 
-    private static JoJoRouter INSTANCE;
+    private static ActionRouter INSTANCE;
     private static boolean hasInit = false;
 
     private static Pattern pattern = new DefaultPattern();
@@ -35,13 +35,13 @@ public class JoJoRouter {
         hasInit = true;
     }
 
-    public static JoJoRouter getInstance() {
+    public static ActionRouter getInstance() {
         if (!hasInit) {
             throw new RuntimeException("JoJo Router must init first");
         }
-        synchronized(JoJoRouter.class) {
+        synchronized(ActionRouter.class) {
             if (INSTANCE == null) {
-                INSTANCE = new JoJoRouter();
+                INSTANCE = new ActionRouter();
             }
         }
         return INSTANCE;
@@ -55,7 +55,7 @@ public class JoJoRouter {
         if (pattern == null) {
             pattern = new DefaultPattern();
         }
-        JoJoRouter.pattern = pattern;
+        ActionRouter.pattern = pattern;
     }
 
 
@@ -68,8 +68,8 @@ public class JoJoRouter {
     /**
      * 无需Context的跳转
      */
-    public RouteResult go(String type, String path) {
-        return with(null).go(type, path);
+    public RouteResult go(String path) {
+        return with(null).go(path);
     }
 
 
@@ -77,20 +77,19 @@ public class JoJoRouter {
         Context context;
         /**
          * 跳转逻辑
-         * @param type
          * @param path
          * @return
          */
-        public RouteResult go(String type, String path) {
+        public RouteResult go(String path) {
             for (RouteData data : Warehouse.actionMap.keySet()) {
                 IRouteAction action = Warehouse.actionMap.get(data);
-                if (action != null && pattern.match(data, type, path)) {
+                if (action != null && pattern.match(data, path)) {
                     return action.doAction(context, path);
                 }
             }
             for (RouteData data : Warehouse.actionClassMap.keySet()) {
                 Class<? extends IRouteAction> cls = Warehouse.actionClassMap.get(data);
-                if (cls != null && pattern.match(data, type, path)) {
+                if (cls != null && pattern.match(data, path)) {
                     try {
                         IRouteAction action = cls.newInstance();
                         Warehouse.actionMap.put(data, action);
