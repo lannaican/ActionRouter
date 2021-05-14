@@ -12,7 +12,7 @@ import javax.tools.Diagnostic;
  */
 public class Logger {
 
-    private final String MESSAGE_PRE = "JoJoRoute: ";
+    private final String MESSAGE_PRE = "ActionRoute: ";
 
     private Messager msg;
 

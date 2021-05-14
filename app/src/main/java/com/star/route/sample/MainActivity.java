@@ -1,9 +1,10 @@
-package com.baby.jojo.demo;
+package com.star.route.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.star.router.ActionRouter;
+import com.star.router.sample.R;
 
 public class MainActivity extends AppCompatActivity {
 

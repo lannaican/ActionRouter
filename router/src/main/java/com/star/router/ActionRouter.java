@@ -37,7 +37,7 @@ public class ActionRouter {
 
     public static ActionRouter getInstance() {
         if (!hasInit) {
-            throw new RuntimeException("JoJo Router must init first");
+            throw new RuntimeException("Action Router must init first");
         }
         synchronized(ActionRouter.class) {
             if (INSTANCE == null) {
