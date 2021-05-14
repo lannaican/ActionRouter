@@ -4,6 +4,7 @@ import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.android.utils.FileUtils
 import com.star.router.plugin.util.ScanSetting
+import com.star.router.plugin.util.ScanUtil
 import org.apache.commons.codec.digest.DigestUtils
 import org.gradle.api.Project
 
@@ -14,8 +15,8 @@ import org.gradle.api.Project
 class RegisterTransform extends Transform {
 
     public static File fileContainsInitClass;
-    static ArrayList<ScanSetting> registerList
-    static Project project;
+    public static ArrayList<ScanSetting> registerList
+    public static Project project;
 
     public RegisterTransform(Project project) {
         this.project = project;
